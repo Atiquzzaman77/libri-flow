@@ -3,7 +3,7 @@ import React from 'react';
 const LoginPage = () => {
     return (
         <div>
-            log in page
+           <button className='text-3xl'>log in </button>
         </div>
     );
 };

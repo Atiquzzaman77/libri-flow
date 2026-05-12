@@ -2,9 +2,54 @@ import React from 'react';
 
 const Header = () => {
     return (
-        <div>
-            this is header
-        </div>
+        <section className="relative bg-background py-20 lg:py-32 overflow-hidden flex items-center justify-center">
+            
+            <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-primary/10 rounded-full blur-3xl -z-10"></div>
+            <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-secondary/10 rounded-full blur-3xl -z-10"></div>
+
+            <div className="max-w-4xl mx-auto px-6 text-center">
+                
+                <div className="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-wider text-primary uppercase bg-primary/10 rounded-full">
+                    The Future of Reading is Here
+                </div>
+                
+               
+                <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-foreground leading-[1.1]">
+                    Revolutionize Your <br />
+                    <span className="text-primary">Reading Experience</span>
+                </h1>
+                
+                
+                <p className="mt-8 text-lg md:text-xl text-default-600 max-w-2xl mx-auto leading-relaxed">
+                    A seamless and modern web application designed to digitize the traditional library experience. 
+                    Explore a vast collection, filter by categories, and borrow your favorite titles digitally.
+                </p>
+                
+                
+                <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-5">
+                    <button className="w-full sm:w-auto px-10 py-4 bg-primary text-white rounded-full font-bold hover:scale-105 transition-transform shadow-xl shadow-primary/25">
+                        Explore Collection
+                    </button>
+                    <button className="w-full sm:w-auto px-10 py-4 border-2 border-default-200 text-foreground rounded-full font-bold hover:bg-default-100 transition-colors">
+                        How it Works
+                    </button>
+                </div>
+
+                
+                <div className="mt-12 flex flex-col items-center gap-4">
+                    <div className="flex -space-x-3">
+                        {[1, 2, 3, 4, 5].map((i) => (
+                            <div key={i} className="w-10 h-10 rounded-full bg-default-200 border-2 border-background flex items-center justify-center font-bold text-[10px] shadow-sm">
+                                U{i}
+                            </div>
+                        ))}
+                    </div>
+                    <p className="text-sm text-default-500 font-medium">
+                        Join <span className="text-foreground font-bold">1,200+</span> book lovers exploring digitally
+                    </p>
+                </div>
+            </div>
+        </section>
     );
 };
 
