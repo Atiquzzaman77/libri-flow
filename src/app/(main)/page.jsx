@@ -1,9 +1,12 @@
+import FeaturedBooks from '@/components/shared/FeaturedBooks';
+import React from 'react';
 
-
-export default function Home() {
+const MainPage = () => {
   return (
-  <div>
-    helloworld
-  </div>
+    <div>
+    <FeaturedBooks></FeaturedBooks>
+    </div>
   );
-}
+};
+
+export default MainPage;

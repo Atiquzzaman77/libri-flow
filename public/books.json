@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "title": "The Silent Alchemist",
+    "author": "Amelie Thorne",
+    "description": "A gripping tale of a young girl who discovers a hidden lab and the secrets of an ancient civilization.",
+    "category": "Story",
+    "available_quantity": 5,
+    "image_url": "https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&q=80&w=400"
+  },
+  {
+    "id": 2,
+    "title": "React 19 Mastery",
+    "author": "David Peterson",
+    "description": "Learn the latest features of React 19, including server components, actions, and the new use hook.",
+    "category": "Tech",
+    "available_quantity": 12,
+    "image_url": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&q=80&w=400"
+  },
+  {
+    "id": 3,
+    "title": "Astrophysics for All",
+    "author": "Dr. Neil Tyson",
+    "description": "An introductory guide to the mysteries of the universe, black holes, and the laws of physics.",
+    "category": "Science",
+    "available_quantity": 8,
+    "image_url": "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&q=80&w=400"
+  },
+  {
+    "id": 4,
+    "title": "Midnight in Dhaka",
+    "author": "Rahat Ahmed",
+    "description": "A collection of short stories reflecting the urban life and mysteries hidden in the streets of Dhaka.",
+    "category": "Story",
+    "available_quantity": 15,
+    "image_url": "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&q=80&w=400"
+  },
+  {
+    "id": 5,
+    "title": "Next.js App Router Guide",
+    "author": "Sarah Drasner",
+    "description": "The ultimate handbook for building fast, SEO-friendly web applications using Next.js 15+.",
+    "category": "Tech",
+    "available_quantity": 20,
+    "image_url": "https://images.unsplash.com/photo-1618477247222-acbdb0e159b3?auto=format&fit=crop&q=80&w=400"
+  },
+  {
+    "id": 6,
+    "title": "The Quantum Realm",
+    "author": "Michio Kaku",
+    "description": "Exploring the bizarre world of quantum mechanics where particles can be in two places at once.",
+    "category": "Science",
+    "available_quantity": 4,
+    "image_url": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=400"
+  },
+  {
+    "id": 7,
+    "title": "Legacy of the Woods",
+    "author": "Julian Rivers",
+    "description": "An adventurous story about three friends trying to save an enchanted forest from a greedy corporation.",
+    "category": "Story",
+    "available_quantity": 9,
+    "image_url": "https://images.unsplash.com/photo-1531901599141-df5283ae447b?auto=format&fit=crop&q=80&w=400"
+  },
+  {
+    "id": 8,
+    "title": "Tailwind CSS v4 Workflow",
+    "author": "Adam Wathan",
+    "description": "Optimize your styling workflow with the new engine of Tailwind CSS v4 and its lightning-fast performance.",
+    "category": "Tech",
+    "available_quantity": 25,
+    "image_url": "https://images.unsplash.com/photo-1587620962725-abab7fe55159?auto=format&fit=crop&q=80&w=400"
+  },
+  {
+    "id": 9,
+    "title": "Genetics and Future",
+    "author": "Alice Winston",
+    "description": "How CRISPR technology and genetic engineering are changing the future of human health.",
+    "category": "Science",
+    "available_quantity": 6,
+    "image_url": "https://images.unsplash.com/photo-1530026186672-2cd00ffc50fe?auto=format&fit=crop&q=80&w=400"
+  },
+  {
+    "id": 10,
+    "title": "Shadow of the Himalaya",
+    "author": "Tenzing Norgay",
+    "description": "A breathtaking story of survival and courage on the world's highest mountain peaks.",
+    "category": "Story",
+    "available_quantity": 3,
+    "image_url": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=400"
+  },
+  {
+    "id": 11,
+    "title": "JavaScript: The New Parts",
+    "author": "Kyle Simpson",
+    "description": "Deep dive into the latest ECMAScript features that every modern developer should know.",
+    "category": "Tech",
+    "available_quantity": 18,
+    "image_url": "https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?auto=format&fit=crop&q=80&w=400"
+  },
+  {
+    "id": 12,
+    "title": "Climate Change Realities",
+    "author": "Elizabeth Kolbert",
+    "description": "A scientific analysis of the current state of our planet and what we can do to prevent a disaster.",
+    "category": "Science",
+    "available_quantity": 10,
+    "image_url": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&q=80&w=400"
+  }
+]

@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import { Link } from "@heroui/react";
+import Link from "next/link";
 // সাধারণ আইকনগুলো Lucide থেকেই থাকল (এগুলোতে সমস্যা নেই)
 import { 
   Mail, 
@@ -40,7 +40,7 @@ const Footer = () => {
             <div className="max-w-7xl mx-auto px-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
                     
-                    {/* Brand Section */}
+                   
                     <div className="space-y-6">
                         <div className="flex items-center gap-2">
                             <div className="w-9 h-9 bg-primary rounded-xl flex items-center justify-center text-white font-bold italic shadow-lg shadow-primary/20">
@@ -53,7 +53,7 @@ const Footer = () => {
                         <p className="text-default-500 text-sm leading-relaxed max-w-xs">
                             A modern digital library platform designed to make reading and borrowing books easier than ever. Join our community of readers today.
                         </p>
-                        {/* Social Icons */}
+                        
                         <div className="flex gap-3">
                             {socialLinks.map((social, index) => (
                                 <Link
@@ -68,7 +68,7 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    {/* Quick Links */}
+                    
                     <div>
                         <h4 className="font-bold text-foreground text-lg mb-6">Quick Explore</h4>
                         <ul className="space-y-4">
@@ -87,7 +87,7 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    {/* Contact Information */}
+                    
                     <div>
                         <h4 className="font-bold text-foreground text-lg mb-6">Contact Us</h4>
                         <div className="space-y-5">
@@ -116,7 +116,7 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    {/* Newsletter or Extra Info */}
+                    
                     <div>
                         <h4 className="font-bold text-foreground text-lg mb-6">About the Project</h4>
                         <p className="text-sm text-default-500 leading-relaxed">
@@ -128,7 +128,7 @@ const Footer = () => {
                     </div>
                 </div>
 
-                {/* Footer Bottom */}
+                
                 <div className="pt-8 border-t border-default-100 flex flex-col md:flex-row justify-between items-center gap-6">
                     <p className="text-default-400 text-xs font-medium">
                         © {currentYear} <span className="text-primary">LibriFlow</span>. Made with ❤️ for Readers.
