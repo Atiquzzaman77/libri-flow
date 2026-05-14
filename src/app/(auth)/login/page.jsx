@@ -2,13 +2,22 @@
 import React from 'react';
 import Link from 'next/link';
 import { LogIn, Mail, Lock, ArrowRight, Globe } from 'lucide-react';
+import { useForm } from 'react-hook-form';
 
 const LoginPage = () => {
+    const { register, handleSubmit, watch } = useForm()
+
+    const handleLoginFunc = (data) => {
+        console.log(data,"data");
+        
+        
+    }
+    console.log(watch("email"));
     return (
         <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6">
             <div className="max-w-md w-full bg-white rounded-[2.5rem] border border-slate-100 p-8 md:p-10 shadow-sm">
-                
-               
+
+
                 <div className="text-center mb-10">
                     <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-3xl mb-4 text-primary">
                         <LogIn size={32} />
@@ -17,40 +26,44 @@ const LoginPage = () => {
                     <p className="text-slate-500 mt-2 font-medium">Login to access your library dashboard</p>
                 </div>
 
-                
-                <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
-                  
+
+                <form className="space-y-5" onSubmit={handleSubmit(handleLoginFunc)}>
+
                     <div className="space-y-2">
                         <label className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Email Address</label>
                         <div className="relative group">
                             <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors" size={20} />
-                            <input 
-                                type="email" 
-                                placeholder="atik@example.com"
+                            <input
+                                type="email"
+                                placeholder="gmail@example.com"
+                               {...register("email")}
+                               required
                                 className="w-full pl-12 pr-4 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:bg-white transition-all text-slate-700 font-medium"
                             />
                         </div>
                     </div>
 
-                   
+
                     <div className="space-y-2">
                         <label className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Password</label>
                         <div className="relative group">
                             <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors" size={20} />
-                            <input 
-                                type="password" 
+                            <input
+                                type="password"
                                 placeholder="••••••••"
+                                {...register("password")}
+                                required
                                 className="w-full pl-12 pr-4 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:bg-white transition-all text-slate-700"
                             />
                         </div>
                     </div>
 
-                  
+
                     <div className="flex justify-end">
                         <button type="button" className="text-sm font-bold text-primary hover:underline">Forgot Password?</button>
                     </div>
 
-                    
+
                     <button type="submit" className="w-full py-4 bg-primary text-white font-black rounded-2xl shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all active:scale-95 flex items-center justify-center gap-2">
                         Login Now <ArrowRight size={20} />
                     </button>
@@ -61,14 +74,14 @@ const LoginPage = () => {
                     <span className="absolute left-1/2 -translate-x-1/2 -top-3 bg-white px-4 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Or continue with</span>
                 </div>
 
-            
+
                 <div className="grid grid-cols-1 gap-4">
                     <button className="flex items-center justify-center gap-3 py-4 bg-secondary/10 text-secondary font-bold rounded-2xl hover:bg-secondary/20 transition-all border border-secondary/5">
                         <Globe size={20} /> Continue with GitHub
                     </button>
                 </div>
 
-         
+
                 <p className="text-center mt-8 text-slate-500 font-medium">
                     Don&lsquo;t have an account? <Link href="/signup" className="text-primary font-black hover:underline">Create One</Link>
                 </p>
