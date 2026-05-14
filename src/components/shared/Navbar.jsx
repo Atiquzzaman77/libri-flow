@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const pathname = usePathname(); // বর্তমান URL পাথ পেতে
+  const pathname = usePathname();
 
   const navLinks = [
     { name: "Home", href: "/" },
@@ -18,7 +18,7 @@ const Navbar = () => {
     <nav className="sticky top-0 z-50 w-full bg-background/70 backdrop-blur-lg border-b border-default-100">
       <header className="max-w-7xl mx-auto flex h-16 items-center justify-between px-6">
         
-        {/* Logo Section */}
+        
         <div className="flex items-center gap-3">
           <Link href="/" className="flex items-center gap-2 no-underline text-foreground">
             <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-bold italic shadow-lg shadow-primary/20">
@@ -30,17 +30,17 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Desktop Links (Center) */}
+       
         <ul className="hidden md:flex items-center gap-3">
           {navLinks.map((link) => {
-            const isActive = pathname === link.href; // চেক করছি এই লিঙ্কটি বর্তমানে ওপেন আছে কি না
+            const isActive = pathname === link.href; 
             return (
               <li key={link.href}>
                 <Link
                   href={link.href}
                   className={`relative px-5 py-2 text-sm font-medium transition-all duration-300 rounded-xl hover:scale-105 active:scale-95 no-underline 
                     ${isActive 
-                      ? "bg-primary text-white shadow-md shadow-primary/20" // সিলেক্টেড থাকলে এই স্টাইল
+                      ? "bg-primary text-white shadow-md shadow-primary/20" 
                       : "text-default-600 hover:bg-default-100 hover:text-primary"
                     }`}
                 >
@@ -51,10 +51,10 @@ const Navbar = () => {
           })}
         </ul>
 
-        {/* Profile & Login Section */}
+        
         <div className="flex items-center gap-4">
           <div className="hidden sm:flex items-center gap-3">
-            {/* প্রোফাইল আইকন - আলাদা লিঙ্ক */}
+            
             <Link href="/profile" className="text-default-600 no-underline">
               <div className="w-10 h-10 rounded-full bg-default-100 flex items-center justify-center border-2 border-default-200 shadow-sm hover:border-primary transition-colors">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -63,7 +63,7 @@ const Navbar = () => {
               </div>
             </Link>
 
-            {/* লগইন বাটন - আলাদা বাটন সরাসরি href সহ */}
+            
             <Link href="/login">
             <Button
               
@@ -77,7 +77,7 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Mobile Menu Toggle */}
+          
           <button
             className="md:hidden p-2 text-foreground"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -95,7 +95,7 @@ const Navbar = () => {
         </div>
       </header>
 
-      {/* Mobile Menu */}
+      
       {isMenuOpen && (
         <div className="md:hidden bg-background px-6 py-6 space-y-4 border-t border-default-100">
           {navLinks.map((link) => (
