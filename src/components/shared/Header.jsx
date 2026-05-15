@@ -41,15 +41,16 @@ const Header = () => {
                         Browse Now
                     </Button>
                     </Link>
+                    <Link href="/signup">
                     <Button 
-                        as={Link}
-                        href="/about"
+                        // as={Link}
+                        // href="/signup"
                         variant="bordered"
                         size="lg"
                         className="w-full sm:w-auto px-10 py-7 border-2 border-default-200 text-foreground rounded-full font-bold hover:bg-default-100 transition-colors text-lg"
                     >
-                        How it Works
-                    </Button>
+                        Register Now
+                    </Button></Link>
                 </div>
 
                 

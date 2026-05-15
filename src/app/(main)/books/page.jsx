@@ -1,112 +1,119 @@
 "use client";
-import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-import { Search, ArrowRight, BookOpen } from "lucide-react";
+import React, { useState, useEffect } from 'react';
+import FeaturedBookCard from '@/components/FeaturedBookCard'; 
+import { Search, Filter, BookOpen } from 'lucide-react';
 
-const BooksPage = () => {
+const AllBooksPage = () => {
     const [books, setBooks] = useState([]);
+    const [filteredBooks, setFilteredBooks] = useState([]);
+    const [categories, setCategories] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState("All");
     const [searchQuery, setSearchQuery] = useState("");
-    const router = useRouter();
 
     useEffect(() => {
+        
         fetch('/books.json')
-            .then((res) => res.json())
-            .then((data) => setBooks(data))
-            .catch((err) => console.error("Error fetching books:", err));
+            .then(res => res.json())
+            .then(data => {
+                setBooks(data);
+                setFilteredBooks(data);
+              
+                const uniqueCats = ["All", ...new Set(data.map(book => book.category))];
+                setCategories(uniqueCats);
+            })
+            .catch(err => console.error("Error loading books:", err));
     }, []);
 
-    const filteredBooks = books.filter((book) =>
-        book.title.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+    
+    useEffect(() => {
+        let result = books;
+
+        if (selectedCategory !== "All") {
+            result = result.filter(book => book.category === selectedCategory);
+        }
+
+        if (searchQuery) {
+            result = result.filter(book => 
+                book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                book.author.toLowerCase().includes(searchQuery.toLowerCase())
+            );
+        }
+
+        setFilteredBooks(result);
+    }, [selectedCategory, searchQuery, books]);
 
     return (
-        <main className="min-h-screen bg-white">
-
-            <section className="bg-slate-50 border-b border-slate-100 py-16 px-6">
-                <div className="max-w-4xl mx-auto text-center space-y-8">
-                    <div className="space-y-4">
-                        <h1 className="text-4xl md:text-5xl font-extrabold text-slate-800 tracking-tight">
-                            Explore Our <span className="text-blue-600">Library</span>
-                        </h1>
-                        <p className="text-slate-500 text-lg">
-                            Search through thousands of books and find your next favorite read.
-                        </p>
-                    </div>
-
-                    
-                    <div className="relative max-w-2xl mx-auto group">
-                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                            <Search className="text-slate-400 group-focus-within:text-blue-600 transition-colors" size={20} />
-                        </div>
-                        <input
-                            type="text"
-                            placeholder="Search by book title..."
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                            className="w-full h-14 pl-12 pr-4 bg-white border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition-all shadow-sm text-slate-700"
-                        />
-                    </div>
-                </div>
-            </section>
-
+        <div className="min-h-screen bg-slate-50/50 pb-20">
             
-            <section className="max-w-7xl mx-auto px-6 py-20">
-                {filteredBooks.length > 0 ? (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {filteredBooks.map((book) => (
-                            <div
-                                key={book.id}
-                                onClick={() => router.push(`/books/${book.id}`)}
-                                className="cursor-pointer bg-slate-50 hover:bg-slate-100 transition-all duration-300 group shadow-sm hover:shadow-xl rounded-3xl overflow-hidden border border-slate-100"
-                            >
-                                
-                                <div className="relative aspect-3/4 w-full overflow-hidden">
-                                    <Image
-                                        src={book.image_url}
-                                        alt={book.title}
-                                        
-                                        fill
-                                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                                    />
-                                    <div className="absolute top-4 right-4 z-10">
-                                        <div className="bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-extrabold text-blue-600 uppercase border border-blue-100">
-                                            {book.category}
-                                        </div>
-                                    </div>
-                                </div>
+            <div className="bg-white border-b border-slate-100 py-12 mb-10">
+                <div className="max-w-7xl mx-auto px-6">
+                    <h1 className="text-4xl font-black text-slate-800 mb-4">Explore Library</h1>
+                    <p className="text-slate-500 font-medium">Find your next favorite book from our collection</p>
+                </div>
+            </div>
 
-                                
-                                <div className="p-6 space-y-4">
-                                    <div className="space-y-1">
-                                        <h3 className="font-bold text-lg text-slate-800 truncate">
-                                            {book.title}
-                                        </h3>
-                                        <p className="text-xs text-blue-600 font-semibold italic">by {book.author}</p>
-                                    </div>
-
-                                    <button
-                                        className="w-full py-3 bg-blue-50 text-blue-600 font-bold rounded-xl flex items-center justify-center gap-2 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300"
-                                    >
-                                        View Details
-                                        <ArrowRight size={16} />
-                                    </button>
-                                </div>
+            <div className="max-w-7xl mx-auto px-6">
+                <div className="flex flex-col lg:flex-row gap-10">
+                    
+                    
+                    <aside className="w-full lg:w-64 shrink-0">
+                        <div className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm sticky top-24">
+                            <div className="flex items-center gap-2 mb-6 text-slate-800">
+                                <Filter size={20} className="text-primary" />
+                                <h2 className="font-black text-lg uppercase tracking-tight">Categories</h2>
                             </div>
-                        ))}
-                    </div>
-                ) : (
-                    <div className="text-center py-20 space-y-4">
-                        <div className="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center mx-auto text-slate-400">
-                            <BookOpen size={40} />
+                            
+                            <div className="space-y-2">
+                                {categories.map((cat) => (
+                                    <button
+                                        key={cat}
+                                        onClick={() => setSelectedCategory(cat)}
+                                        className={`w-full text-left px-5 py-3 rounded-2xl font-bold transition-all ${
+                                            selectedCategory === cat 
+                                            ? "bg-primary text-white shadow-md shadow-primary/20 scale-105" 
+                                            : "text-slate-500 hover:bg-slate-50 hover:text-slate-800"
+                                        }`}
+                                    >
+                                        {cat}
+                                    </button>
+                                ))}
+                            </div>
                         </div>
-                        <h3 className="text-xl font-bold text-slate-800">No books found</h3>
-                        <p className="text-slate-500">Try searching with a different title.</p>
-                    </div>
-                )}
-            </section>
-        </main>
+                    </aside>
+
+                  
+                    <main className="flex-1">
+                        
+                        <div className="relative mb-8 group">
+                            <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors" size={22} />
+                            <input 
+                                type="text"
+                                placeholder="Search by title or author..."
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                className="w-full pl-16 pr-6 py-5 bg-white border border-slate-100 rounded-[2rem] focus:outline-none focus:ring-4 focus:ring-primary/10 shadow-sm font-medium text-slate-700"
+                            />
+                        </div>
+
+                        
+                        {filteredBooks.length > 0 ? (
+                            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+                                {filteredBooks.map((book) => (
+                                    <FeaturedBookCard key={book.id || book._id} book={book} />
+                                ))}
+                            </div>
+                        ) : (
+                            <div className="text-center py-20 bg-white rounded-[3rem] border border-dashed border-slate-200">
+                                <BookOpen size={48} className="mx-auto text-slate-300 mb-4" />
+                                <p className="text-slate-500 font-bold">No books found in this category.</p>
+                            </div>
+                        )}
+                    </main>
+
+                </div>
+            </div>
+        </div>
     );
 };
 
-export default BooksPage;
+export default AllBooksPage;
