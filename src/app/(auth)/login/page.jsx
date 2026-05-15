@@ -4,16 +4,16 @@ import Link from 'next/link';
 import { LogIn, Mail, Lock, ArrowRight, Globe, AlertCircle } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { authClient } from '@/lib/auth-client';
-import { useAuth } from '@/lib/AuthContext'; // Context ইমপোর্ট
+import { useAuth } from '@/lib/AuthContext'; 
 import { useRouter } from 'next/navigation';
 
 const LoginPage = () => {
     const { register, handleSubmit } = useForm();
-    const { login } = useAuth(); // login ফাংশনটি নিন
+    const { login } = useAuth(); 
     const router = useRouter();
     const [serverError, setServerError] = useState("");
 
-    // Google Sign In Handler
+   
     const handleGoogleSignIn = async () => {
         try {
             const { data, error } = await authClient.signIn.social({
@@ -22,7 +22,7 @@ const LoginPage = () => {
             });
             if (error) throw error;
             if (data?.user) {
-                login(data.user); // Context আপডেট
+                login(data.user); 
             }
         } catch (err) {
             setServerError(err.message || "Google Login failed.");
