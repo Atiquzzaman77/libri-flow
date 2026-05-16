@@ -1,27 +1,28 @@
 "use client";
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import FeaturedBookCard from '@/components/FeaturedBookCard'; 
 import { Search, Filter, BookOpen } from 'lucide-react';
 
 const AllBooksPage = () => {
     const [books, setBooks] = useState([]);
+    const [filteredBooks, setFilteredBooks] = useState([]);
+    const [categories, setCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState("All");
     const [searchQuery, setSearchQuery] = useState("");
 
-    // Fetch books once on mount
     useEffect(() => {
         fetch('/books.json')
             .then(res => res.json())
-            .then(data => setBooks(data))
+            .then(data => {
+                setBooks(data);
+                setFilteredBooks(data);
+                const uniqueCats = ["All", ...new Set(data.map(book => book.category))];
+                setCategories(uniqueCats);
+            })
             .catch(err => console.error("Error loading books:", err));
     }, []);
 
-    // Compute derived state instead of storing in state
-    const categories = useMemo(() => {
-        return ["All", ...new Set(books.map(book => book.category))];
-    }, [books]);
-
-    const filteredBooks = useMemo(() => {
+    useEffect(() => {
         let result = books;
 
         if (selectedCategory !== "All") {
@@ -35,8 +36,8 @@ const AllBooksPage = () => {
             );
         }
 
-        return result;
-    }, [books, selectedCategory, searchQuery]);
+        setFilteredBooks(result);
+    }, [selectedCategory, searchQuery, books]);
 
     return (
         <div className="min-h-screen bg-slate-50/50 pb-20">

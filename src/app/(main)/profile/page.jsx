@@ -8,8 +8,8 @@ import Image from 'next/image';
 
 const ProfilePage = () => {
     const { user } = useAuth(); 
-    const [name, setName] = useState(user?.name || "");
-    const [photoUrl, setPhotoUrl] = useState(user?.image || "");
+    const [name, setName] = useState(() => user?.name || "");
+    const [photoUrl, setPhotoUrl] = useState(() => user?.image || "");
     const [isUpdating, setIsUpdating] = useState(false);
     const [successMessage, setSuccessMessage] = useState("");
 
