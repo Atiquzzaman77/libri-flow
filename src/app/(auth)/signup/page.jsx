@@ -84,7 +84,7 @@ const SignupPage = () => {
                             <input
                                 type="text"
                                 {...register("name", { required: "Name is required" })}
-                                placeholder="Atiq Rahaman"
+                                placeholder="Enter your name"
                                 className={`w-full pl-12 pr-4 py-4 bg-slate-50 border ${errors.name ? 'border-red-300' : 'border-slate-100'} rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:bg-white transition-all text-slate-700 font-medium`}
                             />
                         </div>
