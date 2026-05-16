@@ -10,10 +10,10 @@ import { useAuth } from '@/lib/AuthContext'; // Context ইমপোর্ট
 const SignupPage = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const router = useRouter();
-    const { login } = useAuth(); // login ফাংশনটি নিন
+    const { login } = useAuth(); 
     const [serverError, setServerError] = useState("");
 
-    // Google Sign In Handler
+   
     const handleGoogleSignIn = async () => {
         try {
             const { data, error } = await authClient.signIn.social({
@@ -22,14 +22,14 @@ const SignupPage = () => {
             });
             if (error) throw error;
             if (data?.user) {
-                login(data.user); // Context আপডেট
+                login(data.user); 
             }
         } catch (err) {
             setServerError(err.message || "Google Sign in failed.");
         }
     }
 
-    // Email Signup Handler
+   
     const handleSignupFunc = async (formData) => {
         setServerError("");
         const { name, email, password, photoUrl } = formData;
@@ -49,7 +49,7 @@ const SignupPage = () => {
             }
 
             if (res?.user) {
-                login(res.user); // Context আপডেট
+                login(res.user);
                 router.push('/');
             }
 
